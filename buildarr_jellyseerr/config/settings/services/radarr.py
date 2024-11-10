@@ -26,7 +26,7 @@ from typing import Any, Dict, List, Mapping, Optional, Set, Union
 
 from buildarr.config import RemoteMapEntry
 from buildarr.state import state
-from buildarr.types import BaseEnum, InstanceName, NonEmptyStr, Port
+from buildarr.types import BaseEnum, InstanceReference, NonEmptyStr, Port
 from pydantic import Field, validator
 from typing_extensions import Self
 
@@ -48,7 +48,7 @@ class MinimumAvailability(BaseEnum):
 class Radarr(ArrBase):
     # Radarr application link for Jellyseerr.
 
-    instance_name: Optional[InstanceName] = Field(None, plugin="radarr")
+    instance_name: Optional[InstanceReference] = Field(None, plugin="radarr")
     """
     The name of the Radarr instance within Buildarr, if linking this Radarr instance
     with another Buildarr-defined Radarr instance.
