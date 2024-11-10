@@ -20,7 +20,7 @@ Jellyseerr plugin general settings configuration.
 from __future__ import annotations
 
 from http import HTTPStatus
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from buildarr.types import LowerCaseNonEmptyStr, LowerCaseStr, NonEmptyStr, UpperCaseStr
@@ -125,7 +125,7 @@ class JellyseerrGeneralSettings(JellyseerrConfigBase):
     Allow making media requests for only part of a series.
     """
 
-    _remote_map: List[RemoteMapEntry] = [
+    _remote_map: ClassVar[List[RemoteMapEntry]] = [
         ("application_title", "applicationTitle", {}),
         (
             "application_url",

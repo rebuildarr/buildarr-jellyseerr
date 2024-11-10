@@ -20,7 +20,7 @@ Jellyseerr plugin email notifications settings configuration base class.
 from __future__ import annotations
 
 from http import HTTPStatus
-from typing import List, Set
+from typing import ClassVar, List, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import SecretStr
@@ -52,8 +52,8 @@ class NotificationsSettingsBase(JellyseerrConfigBase):
     If enabled, some configuration attributes for the service will be required.
     """
 
-    _type: str
-    _required_if_enabled: Set[str] = set()
+    _type: ClassVar[str]
+    _required_if_enabled: ClassVar[Set[str]] = set()
 
     @classmethod
     def _get_base_remote_map(cls) -> List[RemoteMapEntry]:

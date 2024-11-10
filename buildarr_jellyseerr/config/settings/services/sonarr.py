@@ -26,7 +26,7 @@ from typing import Any, Dict, List, Mapping, Optional, Set, Union
 
 from buildarr.config import RemoteMapEntry
 from buildarr.state import state
-from buildarr.types import InstanceName, NonEmptyStr, Port
+from buildarr.types import InstanceReference, NonEmptyStr, Port
 from pydantic import Field, validator
 from typing_extensions import Self
 
@@ -42,7 +42,7 @@ logger = logging.getLogger(__name__)
 class Sonarr(ArrBase):
     # Sonarr application link for Jellyseerr.
 
-    instance_name: Optional[InstanceName] = Field(None, plugin="sonarr")
+    instance_name: Optional[InstanceReference] = Field(None, plugin="sonarr")
     """
     The name of the Sonarr instance within Buildarr, if linking this Sonarr instance
     with another Buildarr-defined Sonarr instance.
