@@ -19,7 +19,7 @@ Jellyseerr plugin Pushover notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import SecretStr
@@ -53,8 +53,8 @@ class PushoverSettings(NotificationTypesSettingsBase):
     **Required if Pushover notifications are enabled.**
     """
 
-    _type: str = "pushover"
-    _required_if_enabled: Set[str] = {"api_key", "user_key"}
+    _type: ClassVar[str] = "pushover"
+    _required_if_enabled: ClassVar[Set[str]] = {"api_key", "user_key"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:

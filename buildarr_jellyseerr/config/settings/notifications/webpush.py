@@ -19,6 +19,8 @@ Jellyseerr plugin webpush notifications settings configuration.
 
 from __future__ import annotations
 
+from typing import ClassVar
+
 from .base import NotificationsSettingsBase
 
 
@@ -39,4 +41,4 @@ class WebpushSettings(NotificationsSettingsBase):
     ```
     """
 
-    _type: str = "webpush"
+    _type: ClassVar[str] = "webpush"

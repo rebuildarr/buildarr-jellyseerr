@@ -19,7 +19,7 @@ Jellyseerr plugin Discord notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import AnyHttpUrl
@@ -58,8 +58,8 @@ class DiscordSettings(NotificationTypesSettingsBase):
     Allow the user to mention when posting.
     """
 
-    _type: str = "discord"
-    _required_if_enabled: Set[str] = {"webhook_url"}
+    _type: ClassVar[str] = "discord"
+    _required_if_enabled: ClassVar[Set[str]] = {"webhook_url"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:

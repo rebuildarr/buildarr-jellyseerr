@@ -19,7 +19,7 @@ Jellyseerr plugin Telegram notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import SecretStr
@@ -62,8 +62,8 @@ class TelegramSettings(NotificationTypesSettingsBase):
     When set to `true`, sends messages without notification sounds.
     """
 
-    _type: str = "telegram"
-    _required_if_enabled: Set[str] = {"access_token", "chat_id"}
+    _type: ClassVar[str] = "telegram"
+    _required_if_enabled: ClassVar[Set[str]] = {"access_token", "chat_id"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:

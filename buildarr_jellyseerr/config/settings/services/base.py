@@ -22,7 +22,7 @@ from __future__ import annotations
 import operator
 
 from logging import getLogger
-from typing import List, Optional
+from typing import ClassVar, List, Optional
 
 from buildarr.config import RemoteMapEntry
 from buildarr.types import NonEmptyStr, Port
@@ -89,7 +89,7 @@ class ArrBase(JellyseerrConfigBase):
     Automatically search for media upon approval of a request.
     """
 
-    _base_remote_map: List[RemoteMapEntry] = [
+    _base_remote_map: ClassVar[List[RemoteMapEntry]] = [
         ("is_default_server", "isDefault", {}),
         ("is_4k_server", "is4k", {}),
         ("hostname", "hostname", {}),
@@ -109,7 +109,9 @@ class ArrBase(JellyseerrConfigBase):
         ),
     ]
 
-    class Config(JellyseerrConfigBase.Config):
+    model_config = {
+        **JellyseerrConfigBase.model_config,
         # Ensure in-place assignments of attributes are always validated,
         # since this class performs such modifications in certain cases.
-        validate_assignment = True
+        "validate_assignment": True,
+    }

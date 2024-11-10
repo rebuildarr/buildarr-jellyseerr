@@ -19,7 +19,7 @@ Jellyseerr plugin Pushbullet notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import SecretStr
@@ -45,8 +45,8 @@ class PushbulletSettings(NotificationTypesSettingsBase):
     to any devices subscribed to it.
     """
 
-    _type: str = "pushbullet"
-    _required_if_enabled: Set[str] = {"access_token"}
+    _type: ClassVar[str] = "pushbullet"
+    _required_if_enabled: ClassVar[Set[str]] = {"access_token"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:

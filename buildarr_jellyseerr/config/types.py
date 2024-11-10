@@ -27,9 +27,13 @@ if TYPE_CHECKING:
     from ..secrets import JellyseerrSecrets
 
     class JellyseerrConfigBase(ConfigBase[JellyseerrSecrets]):
-        pass
+        model_config = {
+            **ConfigBase.model_config,
+        }
 
 else:
 
     class JellyseerrConfigBase(ConfigBase):
-        pass
+        model_config = {
+            **ConfigBase.model_config,
+        }

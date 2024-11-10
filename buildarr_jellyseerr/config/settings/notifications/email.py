@@ -19,7 +19,7 @@ Jellyseerr plugin email notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Set
+from typing import ClassVar, Dict, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from buildarr.types import BaseEnum, Port
@@ -168,8 +168,8 @@ class EmailSettings(NotificationsSettingsBase):
     An optional password for unlocking the PGP private key.
     """
 
-    _type: str = "email"
-    _required_if_enabled: Set[str] = {"sender_name", "sender_address", "smtp_host"}
+    _type: ClassVar[str] = "email"
+    _required_if_enabled: ClassVar[Set[str]] = {"sender_name", "sender_address", "smtp_host"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:

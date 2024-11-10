@@ -19,7 +19,7 @@ Jellyseerr plugin LunaSea notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import AnyHttpUrl
@@ -46,8 +46,8 @@ class LunaseaSettings(NotificationTypesSettingsBase):
     If set to `null`, uses the `default` profile.
     """
 
-    _type: str = "lunasea"
-    _required_if_enabled: Set[str] = {"webhook_url"}
+    _type: ClassVar[str] = "lunasea"
+    _required_if_enabled: ClassVar[Set[str]] = {"webhook_url"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:

@@ -19,7 +19,7 @@ Jellyseerr plugin Gotify notifications settings configuration.
 
 from __future__ import annotations
 
-from typing import List, Optional, Set
+from typing import ClassVar, List, Optional, Set
 
 from buildarr.config import RemoteMapEntry
 from pydantic import AnyHttpUrl, SecretStr
@@ -46,8 +46,8 @@ class GotifySettings(NotificationTypesSettingsBase):
     **Required if Gotify notifications are enabled.**
     """
 
-    _type: str = "gotify"
-    _required_if_enabled: Set[str] = {"server_url", "access_token"}
+    _type: ClassVar[str] = "gotify"
+    _required_if_enabled: ClassVar[Set[str]] = {"server_url", "access_token"}
 
     @classmethod
     def _get_remote_map(cls) -> List[RemoteMapEntry]:
